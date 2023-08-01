@@ -1,8 +1,8 @@
 const grid = document.querySelector('.grid-container')
 const slider = document.querySelector('#myRange')
+const clear = document.querySelector('#clearButton')
 let gridSize = 256; // default grid size
 let sliderOutput = document.querySelector('.showRange') // number shown from slider
-
 document.addEventListener('onload', makeGrid(16))
 
 
@@ -28,9 +28,19 @@ function blackColor (selectedSquare) {
     }
 }
 
+function clearGrid() {
+    let clearSquares = grid.querySelectorAll("div")
+    clearSquares.forEach((div) => div.style.backgroundColor = 'white')
+}
 
+/* Event Listeners */
 
-slider.addEventListener("input", (e) => {
+clear.addEventListener("click", e => {
+    clearGrid()
+
+})
+
+slider.addEventListener("input", e => {
     let gridSizeOutput = e.target.value
     sliderOutput.textContent = `${gridSizeOutput} x ${gridSizeOutput}`
     makeGrid(gridSizeOutput)
