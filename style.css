@@ -54,6 +54,11 @@ body {
     width: 50px;
 }
 
+#colorButton {
+    background-color: #212121;
+    color:#E9ECEF
+}
+
 .buttonSection {
     margin-top: 50px;
     gap: 50px;
