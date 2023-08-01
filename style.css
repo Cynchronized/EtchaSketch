@@ -28,8 +28,13 @@ body {
     width: 600px;
     height: 600px;
     display: grid;
-    border: 1px solid #E9ECEF
 }
+
+.grid-box {
+    background-color: white;
+    border: 1px solid black;
+}
+
 
 
 /* Footer */
