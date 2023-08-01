@@ -6,8 +6,6 @@ let sliderOutput = document.querySelector('.showRange') // number shown from sli
 document.addEventListener('onload', makeGrid(16))
 
 
-
-
 /* Functions */
 function makeGrid(size) {
     let squares = grid.querySelectorAll("div")
@@ -24,9 +22,9 @@ function makeGrid(size) {
     }
 }
 
-function blackColor (box) {
-    if (box.parentNode === grid) {
-        box.style.backgroundColor = 'black'
+function blackColor (selectedSquare) {
+    if (selectedSquare.parentNode === grid) {
+        selectedSquare.style.backgroundColor = 'black'
     }
 }
 

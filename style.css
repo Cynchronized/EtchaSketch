@@ -49,11 +49,40 @@ body {
     gap: 10px;
 }
 
+#colorPicker {
+    height: 50px;
+    width: 50px;
+}
+
+.buttonSection {
+    margin-top: 50px;
+    gap: 50px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebarButtons {
+    height: 50px;
+    width: 200px;
+    border-radius: 20px;
+    background-color: #E9ECEF;
+    color: #212121;
+    font-size: 1rem;
+    transition-duration: 300ms;
+}
+
 .showRange {
     text-align: center;
     color: #DEE2E6;
     font-size: 2rem;
     padding: 3px;
+}
+
+button:hover {
+    transform: scale(1.1)
 }
 
 
