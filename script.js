@@ -19,9 +19,8 @@ document.addEventListener("mouseover", e => {
     let square = e.target
 
     if (square.parentNode === grid) {
-        square.style.backgroundColor = 'blue'
+        square.style.backgroundColor = 'black'
     }
     
-    console.log(square)
 
 })
