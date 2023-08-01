@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #343A40;
+}
+
+/* Header */
+
+.header {
+    color: #E9ECEF;
+    text-align: center;
+    padding: 50px;
+    font-size: 5rem;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container {
+    width: 600px;
+    height: 600px;
+    display: grid;
+    border: 1px solid #E9ECEF
+}
+
+
+/* Footer */
+.footer {
+    padding: 25px;
+    color: #E9ECEF;
+    position: sticky;
+    top: 100%;
+    text-align: center;
+}
