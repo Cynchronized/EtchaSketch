@@ -1,26 +1,47 @@
 const grid = document.querySelector('.grid-container')
-grid.style.gridTemplateColumns = "repeat(16, 1fr)"
-grid.style.gridTemplateRows = "repeat(16, 1fr)"
+const slider = document.querySelector('#myRange')
+let gridSize = 256; // default grid size
+let sliderOutput = document.querySelector('.showRange') // number shown from slider
 
-document.addEventListener('onload', makeGrid())
+document.addEventListener('onload', makeGrid(16))
+
+
 
 
 /* Functions */
-function makeGrid() {
-    for(let i=0; i<256; i++) {
+function makeGrid(size) {
+    let squares = grid.querySelectorAll("div")
+    squares.forEach((div) => div.remove())
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
+
+    let gridSize = size * size
+
+    for(let i=0; i< gridSize; i++) {
         let box = document.createElement('div')
         box.classList.add('grid-box')
         grid.insertAdjacentElement('beforeend', box)
     }
 }
 
+function blackColor (box) {
+    if (box.parentNode === grid) {
+        box.style.backgroundColor = 'black'
+    }
+}
+
+
+
+slider.addEventListener("input", (e) => {
+    let gridSizeOutput = e.target.value
+    sliderOutput.textContent = `${gridSizeOutput} x ${gridSizeOutput}`
+    makeGrid(gridSizeOutput)
+
+})
+
 document.addEventListener("mouseover", e => {
 
     let square = e.target
-
-    if (square.parentNode === grid) {
-        square.style.backgroundColor = 'black'
-    }
-    
-
+    blackColor(square)
 })
+
