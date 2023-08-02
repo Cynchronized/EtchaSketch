@@ -5,12 +5,20 @@ const rainbow = document.querySelector('#rainbowButton')
 const color = document.querySelector('#colorButton')
 let gridSize = 256; // default grid size
 let sliderOutput = document.querySelector('.showRange') // number shown from slider
-let selectedColor = 'color' // default color
+let selectedButton = 'color' // default color
+let selectedColor = 'color'
+let colorPicker = document.querySelector('#colorPicker')
 
-document.addEventListener('onload', makeGrid(16)) // initial grid creation
+
+startup()
 
 
 /* Functions */
+function startup() {
+    document.addEventListener('onload', makeGrid(16))
+}
+
+
 function makeGrid(size) {
     let squares = grid.querySelectorAll("div")
     squares.forEach((div) => div.remove())
@@ -32,12 +40,13 @@ function clearGrid() {
 }
 
 
-function changeColor (selectedSquare, selectedColor) {
+function changeColor (selectedSquare, selectedButton) {
     if (selectedSquare.parentNode === grid) {
-        if (selectedColor === 'color') {
-            selectedSquare.style.backgroundColor = 'black'
+        if (selectedButton === 'color') {
+            let selectedColor = colorPicker.value
+            selectedSquare.style.backgroundColor = selectedColor
         }
-        if (selectedColor === 'rainbow') {
+        if (selectedButton === 'rainbow') {
             let randomColor = randomHexColor()
             selectedSquare.style.backgroundColor = randomColor
         }
