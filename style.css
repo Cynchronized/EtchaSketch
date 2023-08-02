@@ -53,13 +53,7 @@ body {
     width: 50px;
 }
 
-#colorButton {
-    background-color: #212121;
-    color:#E9ECEF;
-}
-
 .buttonSection {
-    margin-top: 50px;
     gap: 50px;
     padding: 25px;
     display: flex;
@@ -78,12 +72,6 @@ body {
     transition-duration: 300ms;
 }
 
-.showRange {
-    text-align: center;
-    color: #DEE2E6;
-    font-size: 2rem;
-    padding: 3px;
-}
 
 button:hover {
     transform: scale(1.1)
@@ -94,6 +82,55 @@ button:hover {
     cursor: pointer;
 }
 
+/* Class to be added in javascript */
+
+.active {
+    background-color: #212121;
+    color:#E9ECEF;
+
+}
+
+/* Slider */
+
+.showRange {
+    margin-bottom: 5px;
+    text-align: center;
+    color: #DEE2E6;
+    font-size: 2rem;
+    padding: 3px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 200px;
+    height: 15px;
+    border-radius: 5px;  
+    background: #F8F9FA;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; 
+    background: #212529;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+
+
 
 /* Footer */
 .footer {
@@ -102,4 +139,10 @@ button:hover {
     position: sticky;
     top: 100%;
     text-align: center;
+    font-size: 25px;
+}
+
+img {
+    width: 50px;
+    height: 50px;
 }

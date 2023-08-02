@@ -3,14 +3,17 @@ const slider = document.querySelector('#myRange')
 const clear = document.querySelector('#clearButton')
 const rainbow = document.querySelector('#rainbowButton')
 const color = document.querySelector('#colorButton')
-let gridSize = 256; // default grid size
+const eraser = document.querySelector('#eraserButton')
+const DEFAULTCOLOR = 'color'
+const DEFAULTGRIDSIZE = 16;
+const ERASERVALUE = 'white'
+let gridSize = DEFAULTGRIDSIZE; // default grid size
 let sliderOutput = document.querySelector('.showRange') // number shown from slider
-let selectedButton = 'color' // default color
-let selectedColor = 'color'
+let selectedButton = DEFAULTCOLOR // default color
+let selectedColor = DEFAULTCOLOR
 let colorPicker = document.querySelector('#colorPicker')
+let targetButton // Button that user chooses
 
-
-startup()
 
 
 /* Functions */
@@ -50,6 +53,25 @@ function changeColor (selectedSquare, selectedButton) {
             let randomColor = randomHexColor()
             selectedSquare.style.backgroundColor = randomColor
         }
+        if (selectedButton === 'eraser') {
+            selectedSquare.style.backgroundColor = ERASERVALUE
+        }
+    }
+}
+
+function changeButtonColor (button) {
+    if (button === 'color') {
+        color.classList.add("active")
+        rainbow.classList.remove("active")
+        eraser.classList.remove("active")
+    }else if (button === 'rainbow') {
+        rainbow.classList.add("active")
+        color.classList.remove("active")
+        eraser.classList.remove("active")
+    }else if (button === 'eraser'){
+        eraser.classList.add("active")
+        rainbow.classList.remove("active")
+        color.classList.remove("active")
     }
 }
 
@@ -77,22 +99,23 @@ const randomInteger = (max) => Math.floor(Math.random() * (max + 1))
 /* Event Listeners */
 
 color.addEventListener('click', e => {
-    let selectedButton = e.target
-    color.style.color = '#E9ECEF'
-    color.style.backgroundColor = '#212121'
-    rainbow.style.color = '#212121'
-    rainbow.style.backgroundColor = '#E9ECEF'
-    selectedColor = 'color'
+    targetButton = e.target.value
+    changeButtonColor(targetButton)
+    selectedColor = targetButton
 })
 
 rainbow.addEventListener('click', e => {
-    let selectedButton = e.target
-    color.style.color = '#212121'
-    color.style.backgroundColor = '#E9ECEF'
-    rainbow.style.color = '#E9ECEF'
-    rainbow.style.backgroundColor = '#212121'
-    selectedColor = 'rainbow'
+    targetButton = e.target.value
+    changeButtonColor(targetButton)
+    selectedColor = targetButton
 })
+
+eraser.addEventListener('click', e => {
+    targetButton = e.target.value
+    changeButtonColor(targetButton)
+    selectedColor = targetButton
+})
+
 
 clear.addEventListener("click", e => {
     clearGrid()
@@ -109,4 +132,9 @@ document.addEventListener("mouseover", e => {
     
     changeColor (square, selectedColor)
 })
+
+window.onload = () => {
+    makeGrid(DEFAULTGRIDSIZE)
+    changeButtonColor(DEFAULTCOLOR)
+}
 
